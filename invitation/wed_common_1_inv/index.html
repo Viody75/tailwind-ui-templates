@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Common Invitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap");
+      body {
+        font-family: "Crimson Text", serif;
+      }
+      .script-font {
+        font-family: "Great Vibes", cursive;
+      }
+      .formal-font {
+        font-family: "Playfair Display", serif;
+      }
+    </style>
+
+    <script>
+      // Custom Wording
+      const invitationTitle = "Wedding Invitation";
+      const invitationSubTitle =
+        "Hearsay never-ending love and may God bless us all with thy grace";
+      const groomName = "Lorem Son Ipsum";
+      const groomPic = "Groom Pic";
+      const groomDesc = "Son of Lorem Ipsum and Doler Samet";
+      const brideName = "Lorem Daughter Ipsum";
+      const bridePic = "Bride Pic";
+      const brideDesc = "Daughter of Lorem Ipsum and Doler Samet";
+      const customNoteTitle = "Lorem Ipsum";
+      const customNoteContent =
+        "This is Custom Notes Section. You can add your custom notes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
+      // Custom Wording
+    </script>
+  </head>
+  <body class="bg-gray-50">
+    <audio id="background-music" loop>
+      <source src="music.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Hero Section -->
+    <section
+      id="hero-section"
+      class="relative w-full h-screen bg-cover bg-center flex flex-col justify-center items-center animate__animated bg-[url('bg_1.png')]"
+    >
+      <!-- <div class="absolute inset-0 bg-black/50"></div> -->
+      <!-- Decorative Ornaments -->
+      <img
+        src="ornaments_1_left.png"
+        alt="Top Left Ornament"
+        class="absolute top-0 left-8 w-48 h-24"
+      />
+      <img
+        src="ornaments_1_left.png"
+        alt="Top Right Ornament"
+        class="absolute top-0 right-8 w-48 h-24 scale-x-[-1]"
+      />
+      <img
+        src="ornaments_1_left.png"
+        alt="Bottom Left Ornament"
+        class="absolute bottom-0 left-8 w-48 h-24 scale-x-[-1] transform rotate-180"
+      />
+      <img
+        src="ornaments_1_left.png"
+        alt="Bottom Right Ornament"
+        class="absolute bottom-0 right-8 w-48 h-24 transform rotate-180"
+      />
+
+      <div class="text-center">
+        <h1 class="text-3xl font-bold" id="invitation-title"></h1>
+        <div class="flex flex-row items-center justify-center mt-2">
+          <p class="text-xl" id="groom-name"></p>
+          <h2 class="text-xl">&nbsp;&&nbsp;</h2>
+          <p class="text-xl" id="bride-name"></p>
+        </div>
+
+        <p class="mt-4 text-lg" id="invitation-subtitle"></p>
+      </div>
+
+      <button
+        class="mt-4 bg-green-900 text-white px-8 py-3 rounded-full shadow-lg hover:bg-green-800 transform hover:scale-105 transition duration-300 font-semibold formal-font"
+        onclick="openInvitation()"
+      >
+        Open Invitation
+      </button>
+    </section>
+
+    <!-- Detail Invitation Section with Navigation -->
+    <section
+      id="invitation-section"
+      class="hidden opacity-0 animate__animated p-10 bg-[url('bg_1.png')] bg-cover bg-center text-center shadow-lg max-w-2xl mx-auto rounded-lg overflow-y-auto h-screen flex flex-col justify-between"
+    >
+      <!-- Detail Invitation Section with Navigation -->
+      <!-- Opening -->
+      <div id="invitation-content" class="animate__animated animate__fadeIn">
+        <div class="flex flex-col items-center">
+          <h2 class="text-2xl font-bold formal-font">Hello Dear Friends</h2>
+          <p class="mt-4 mb-8">
+            We are delighted to invite you to our special event. Please join us
+            to celebrate this memorable occasion.
+          </p>
+          <img
+            src="ornaments_1_center.png"
+            alt="Top Left Ornament"
+            class="w-72 h-16"
+          />
+          <h2
+            class="my-4 text-xl font-bold formal-font"
+            id="invitation-title-opening"
+          ></h2>
+          <div class="flex flex-row justify-center items-center">
+            <div class="flex flex-col justify-center items-end w-48">
+              <img
+                src="https://placehold.co/400x400?text=Groom+Photo"
+                class="w-40 h-40"
+              />
+              <p
+                class="w-40 mt-4 text-large font-bold formal-font text-center"
+                id="groom-name-opening"
+              ></p>
+              <p class="w-40 text-center" id="groom-desc"></p>
+            </div>
+
+            <div class="mx-4 text-2xl">&nbsp;&&nbsp;</div>
+
+            <div class="flex flex-col justify-center items-start w-48">
+              <img
+                src="https://placehold.co/400x400?text=Bride+Photo"
+                class="w-40 h-40"
+              />
+              <p
+                class="w-40 mt-4 text-large font-bold formal-font text-center"
+                id="bride-name-opening"
+              ></p>
+              <p class="w-40 text-center" id="bride-desc"></p>
+            </div>
+          </div>
+          <img
+            src="ornaments_1_center.png"
+            alt="Top Left Ornament"
+            class="mt-8 w-72 h-16 scale-y-[-1]"
+          />
+          <h2
+            class="mt-8 text-2xl font-bold formal-font"
+            id="custome-note-tittle"
+          ></h2>
+          <p class="mt-4 mb-8" id="custome-note-content"></p>
+          <div class="h-24"></div>
+        </div>
+      </div>
+
+      <!-- Schedule -->
+      <div id="schedule-content" class="hidden animate__animated">
+        <h2 class="text-2xl font-bold formal-font">Schedule</h2>
+        <div class="mt-4 flex flex-col items-start">
+          <p class="font-bold text-xl formal-font">#1</p>
+          <div class="w-full flex flex-row">
+            <img
+              src="https://placehold.co/560x400?text=Event+Photo"
+              class="w-56 h-40"
+            />
+            <iframe
+              class="w-24 h-40 mr-4"
+              src="https://maps.google.com/maps?q=XYZ%20Hotel&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            ></iframe>
+          </div>
+          <p class="mt-2 font-bold text-lg formal-font">Resepsi</p>
+          <p class="font-bold">June 15, 2025, at 4:00 PM.</p>
+          <p class="mt-4 text-start">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-col items-start">
+          <p class="font-bold text-xl formal-font">#2</p>
+          <div class="w-full flex flex-row">
+            <img
+              src="https://placehold.co/560x400?text=Event+Photo"
+              class="w-56 h-40"
+            />
+            <iframe
+              class="w-24 h-40 mr-4"
+              src="https://maps.google.com/maps?q=XYZ%20Hotel&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            ></iframe>
+          </div>
+          <p class="mt-2 font-bold text-lg formal-font">Akad</p>
+          <p class="font-bold">June 15, 2025, at 4:00 PM.</p>
+          <p class="mt-4 text-start">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-col items-start">
+          <p class="font-bold text-xl formal-font">#3</p>
+          <div class="w-full flex flex-row">
+            <img
+              src="https://placehold.co/560x400?text=Event+Photo"
+              class="w-56 h-40"
+            />
+            <iframe
+              class="w-24 h-40 mr-4"
+              src="https://maps.google.com/maps?q=XYZ%20Hotel&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            ></iframe>
+          </div>
+          <p class="mt-2 font-bold text-lg formal-font">Akad</p>
+          <p class="font-bold">June 15, 2025, at 4:00 PM.</p>
+          <p class="mt-4 text-start">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+        </div>
+        <div class="h-24"></div>
+      </div>
+
+      <!-- Gallery -->
+      <div id="gallery-content" class="hidden animate__animated">
+        <h2 class="text-2xl font-bold formal-font">Gallery</h2>
+        <p class="mt-4">Beautiful moments of our journey.</p>
+        <div class="mt-8 flex flex-col items-start">
+          <div class="flex flex-row w-full">
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-full h-40 object-cover m-1"
+            />
+          </div>
+          <div class="flex flex-row w-full">
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-24 h-40 object-cover m-1"
+            />
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-full h-40 object-cover m-1"
+            />
+          </div>
+          <div class="flex flex-row w-full">
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-full h-40 object-cover m-1"
+            />
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-24 h-40 object-cover m-1"
+            />
+          </div>
+          <div class="flex flex-row w-full">
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-full h-40 object-cover m-1"
+            />
+          </div>
+          <div class="flex flex-row w-full">
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-full/2 h-40 object-cover m-1"
+            />
+            <img
+              src="https://placehold.co/1000x1000?text=Gallery+Photo"
+              class="w-full/2 h-40 object-cover m-1"
+            />
+          </div>
+          <div class="h-24"></div>
+        </div>
+      </div>
+
+      <!-- Bottom Navigation -->
+      <nav
+        class="absolute bottom-0 left-0 w-full bg-green-900 text-white flex justify-around py-4"
+      >
+        <button onclick="showSection('invitation')" class="font-semibold">
+          Opening
+        </button>
+        <button onclick="showSection('schedule')" class="font-semibold">
+          Schedules
+        </button>
+        <button onclick="showSection('gallery')" class="font-semibold">
+          Gallery
+        </button>
+      </nav>
+    </section>
+
+    <script>
+      document.getElementById("invitation-title").innerText = invitationTitle;
+      document.getElementById("invitation-title-opening").innerText =
+        invitationTitle;
+      document.getElementById("invitation-subtitle").innerText =
+        invitationSubTitle;
+      document.getElementById("groom-name").innerText = groomName;
+      document.getElementById("groom-name-opening").innerText = groomName;
+      document.getElementById("groom-desc").innerText = groomDesc;
+      document.getElementById("bride-name").innerText = brideName;
+      document.getElementById("bride-name-opening").innerText = brideName;
+      document.getElementById("bride-desc").innerText = brideDesc;
+      document.getElementById("custome-note-tittle").innerText =
+        customNoteTitle;
+      document.getElementById("custome-note-content").innerText =
+        customNoteContent;
+
+      function openInvitation() {
+        const heroSection = document.getElementById("hero-section");
+        const invitationSection = document.getElementById("invitation-section");
+
+        heroSection.classList.add("animate__fadeOut");
+        setTimeout(() => {
+          heroSection.classList.add("hidden");
+          invitationSection.classList.remove("hidden", "opacity-0");
+          invitationSection.classList.add("animate__fadeIn");
+        }, 500);
+      }
+
+      function showSection(section) {
+        const sections = ["invitation", "schedule", "gallery"];
+        sections.forEach((sec) => {
+          const element = document.getElementById(`${sec}-content`);
+          element.classList.add("hidden", "animate__fadeOut");
+        });
+
+        const activeSection = document.getElementById(`${section}-content`);
+        activeSection.classList.remove("hidden", "animate__fadeOut");
+        activeSection.classList.add("animate__fadeIn");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("background-music");
+
+        // Periksa apakah browser mendukung autoplay tanpa interaksi pengguna
+        audio.play().catch(() => {
+          console.log("Autoplay diblokir, menunggu interaksi pengguna...");
+        });
+
+        // Menjalankan audio saat tombol "Open Invitation" diklik (untuk mengatasi autoplay policy di beberapa browser)
+        document
+          .querySelector("button[onclick='openInvitation()']")
+          .addEventListener("click", () => {
+            audio.play();
+          });
+      });
+    </script>
+  </body>
+</html>
