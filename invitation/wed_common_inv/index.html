@@ -23,6 +23,7 @@
     </style>
 
     <script>
+      // Custom Wording
       const invitationTitle = "Wedding Invitation";
       const invitationSubTitle =
         "Hearsay never-ending love and may God bless us all with thy grace";
@@ -32,13 +33,22 @@
       const brideName = "Lorem Daughter Ipsum";
       const bridePic = "Bride Pic";
       const brideDesc = "Daughter of Lorem Ipsum and Doler Samet";
+      const customNoteTitle = "Lorem Ipsum";
+      const customNoteContent =
+        "This is Custom Notes Section. You can add your custom notes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
+      // Custom Wording
     </script>
   </head>
   <body class="bg-gray-50">
+    <audio id="background-music" loop>
+      <source src="music.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
     <!-- Hero Section -->
     <section
       id="hero-section"
-      class="relative w-full h-screen bg-cover bg-center flex flex-col justify-center items-center animate__animated bg-[url('bg-1.png')]"
+      class="relative w-full h-screen bg-cover bg-center flex flex-col justify-center items-center animate__animated bg-[url('bg_1.png')]"
     >
       <!-- <div class="absolute inset-0 bg-black/50"></div> -->
       <!-- Decorative Ornaments -->
@@ -85,7 +95,7 @@
     <!-- Detail Invitation Section with Navigation -->
     <section
       id="invitation-section"
-      class="hidden opacity-0 animate__animated p-10 bg-[url('bg-1.png')] bg-cover bg-center text-center shadow-lg max-w-2xl mx-auto rounded-lg overflow-y-auto h-screen flex flex-col justify-between"
+      class="hidden opacity-0 animate__animated p-10 bg-[url('bg_1.png')] bg-cover bg-center text-center shadow-lg max-w-2xl mx-auto rounded-lg overflow-y-auto h-screen flex flex-col justify-between"
     >
       <!-- Detail Invitation Section with Navigation -->
       <!-- Opening -->
@@ -137,6 +147,12 @@
             alt="Top Left Ornament"
             class="mt-8 w-72 h-24 scale-y-[-1]"
           />
+          <h2
+            class="mt-8 text-2xl font-bold formal-font"
+            id="custome-note-tittle"
+          ></h2>
+          <p class="mt-4 mb-8" id="custome-note-content"></p>
+          <div class="h-24"></div>
         </div>
       </div>
 
@@ -203,12 +219,13 @@
             ad minim veniam.
           </p>
         </div>
+        <div class="h-24"></div>
       </div>
 
       <!-- Gallery -->
       <div id="gallery-content" class="hidden animate__animated">
         <h2 class="text-2xl font-bold formal-font">Gallery</h2>
-        <p class="mt-4">Beautiful moments captured from our journey.</p>
+        <p class="mt-4">Beautiful moments of our journey.</p>
         <div class="mt-8 flex flex-col items-start">
           <div class="flex flex-row w-full">
             <img
@@ -252,6 +269,7 @@
               class="w-full/2 h-40 object-cover m-1"
             />
           </div>
+          <div class="h-24"></div>
         </div>
       </div>
 
@@ -283,6 +301,10 @@
       document.getElementById("bride-name").innerText = brideName;
       document.getElementById("bride-name-opening").innerText = brideName;
       document.getElementById("bride-desc").innerText = brideDesc;
+      document.getElementById("custome-note-tittle").innerText =
+        customNoteTitle;
+      document.getElementById("custome-note-content").innerText =
+        customNoteContent;
 
       function openInvitation() {
         const heroSection = document.getElementById("hero-section");
@@ -307,6 +329,22 @@
         activeSection.classList.remove("hidden", "animate__fadeOut");
         activeSection.classList.add("animate__fadeIn");
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("background-music");
+
+        // Periksa apakah browser mendukung autoplay tanpa interaksi pengguna
+        audio.play().catch(() => {
+          console.log("Autoplay diblokir, menunggu interaksi pengguna...");
+        });
+
+        // Menjalankan audio saat tombol "Open Invitation" diklik (untuk mengatasi autoplay policy di beberapa browser)
+        document
+          .querySelector("button[onclick='openInvitation()']")
+          .addEventListener("click", () => {
+            audio.play();
+          });
+      });
     </script>
   </body>
 </html>
