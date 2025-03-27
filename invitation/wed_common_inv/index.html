@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Common Invitation</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -40,11 +42,9 @@
 
       // TODO :
       // - Custom Variable / Wording : RECIPIENTs
-      // - Music Button
-      // - Page for QR Generated Code
-      // - Page for RSVP and logic to hide it?
-      // - Logic Section for API Call?
-      // - Add Video
+      // - Page for QR Generated Code for Check In
+      // - Logic to show/hide List RSVP?
+      // - Make EZ logic Section for API Call?
     </script>
   </head>
   <body class="bg-gray-50">
@@ -52,6 +52,15 @@
       <source src="music.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>
+
+    <!-- Music Control Button -->
+    <button
+      id="music-toggle"
+      class="fixed top-4 right-4 z-50 bg-white p-2 rounded-full shadow-lg hover:bg-gray-200 transition"
+      onclick="toggleMusic()"
+    >
+      <i id="music-icon" data-lucide="volume-2" class="w-6 h-6"></i>
+    </button>
 
     <!-- Hero Section -->
     <section
@@ -160,6 +169,19 @@
             id="custome-note-tittle"
           ></h2>
           <p class="mt-4 mb-8" id="custome-note-content"></p>
+
+          <video
+            class="mt-4 mb-8 w-full max-w-md rounded-lg shadow-lg"
+            controls
+            autoplay
+            loop
+            muted
+            playsinline
+            poster="https://placehold.co/800x450?text=Video"
+          >
+            <source src="video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div class="h-24"></div>
         </div>
       </div>
@@ -281,18 +303,65 @@
         </div>
       </div>
 
+      <!-- RSVP -->
+      <div id="rsvp-content" class="hidden animate__animated">
+        <h2 class="text-2xl font-bold formal-font">RSVP</h2>
+        <p class="mt-4">Let us know if you can attend our special day.</p>
+        <form class="mt-8 w-full max-w-md mx-auto text-left space-y-4">
+          <div>
+            <label class="block font-semibold">Your Name</label>
+            <input
+              type="text"
+              class="w-full border border-gray-300 rounded px-4 py-2"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div>
+            <label class="block font-semibold">Will you attend?</label>
+            <select class="w-full border border-gray-300 rounded px-4 py-2">
+              <option value="">Select...</option>
+              <option value="yes">Yes, I will attend</option>
+              <option value="no">Sorry, I can't attend</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold">Message (optional)</label>
+            <textarea
+              class="w-full border border-gray-300 rounded px-4 py-2"
+              placeholder="Your message..."
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-gray-900 transition font-semibold"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <div class="h-24"></div>
+      </div>
+
       <!-- Bottom Navigation -->
       <nav
         class="absolute bottom-0 left-0 w-full bg-gray-800 text-white flex justify-around py-4"
       >
         <button onclick="showSection('invitation')" class="font-semibold">
+          <i data-lucide="scroll-text" class="w-5 h-5 mb-1 mx-auto"></i>
           Opening
         </button>
         <button onclick="showSection('schedule')" class="font-semibold">
+          <i data-lucide="calendar-days" class="w-5 h-5 mb-1 mx-auto"></i>
           Schedules
         </button>
         <button onclick="showSection('gallery')" class="font-semibold">
+          <i data-lucide="image" class="w-5 h-5 mb-1 mx-auto"></i>
           Gallery
+        </button>
+        <button onclick="showSection('rsvp')" class="font-semibold">
+          <i data-lucide="mail" class="w-5 h-5 mb-1 mx-auto"></i>
+          RSVP
         </button>
       </nav>
     </section>
@@ -327,7 +396,7 @@
       }
 
       function showSection(section) {
-        const sections = ["invitation", "schedule", "gallery"];
+        const sections = ["invitation", "schedule", "gallery", "rsvp"];
         sections.forEach((sec) => {
           const element = document.getElementById(`${sec}-content`);
           element.classList.add("hidden", "animate__fadeOut");
@@ -353,6 +422,22 @@
             audio.play();
           });
       });
+
+      function toggleMusic() {
+        const audio = document.getElementById("background-music");
+        const icon = document.getElementById("music-icon");
+
+        if (audio.paused) {
+          audio.play();
+          icon.setAttribute("data-lucide", "volume-2");
+        } else {
+          audio.pause();
+          icon.setAttribute("data-lucide", "volume-x");
+        }
+      }
+
+      // Icon
+      lucide.createIcons();
     </script>
   </body>
 </html>
